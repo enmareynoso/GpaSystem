@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/HOC/requiereAuth.jsx", "src/components/HOC/requiereAuth.jsx", "src/api/userData.js", "Redux/reducers/accounts.js", "Redux/store.js", "Redux/accountSlice.js", "src/types/Account.types.js", "Redux/actions/accountActions.js", "Redux/store.js", "src/components/account-list.tsx", "Redux/Accounrs/Action.js", "Redux/Accounrs/ActionType.js", "Redux/Accounrs/Reducer.js"],
+  "exclude": ["node_modules"]
+}
