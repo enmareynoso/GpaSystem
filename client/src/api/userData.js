@@ -9,7 +9,6 @@ export const getUserProfile = async () => {
     });
     return data;
   } catch (error) {
-    // Handle different types of errors, such as network error, unauthorized, etc.
     throw new Error("Failed to fetch user profile");
   }
 };

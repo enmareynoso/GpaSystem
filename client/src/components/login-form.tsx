@@ -36,10 +36,8 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
 
       router.push("/accounts");
 
-      // Redirect to the dashboard route after successful login
-      // For example, router.push("/dashboard");
+  
     } catch (error) {
-      // Login failed, display an error message
       setErrorMessage("Invalid username or password.");
       console.error("Login failed:", error);
     } finally {
