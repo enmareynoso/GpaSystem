@@ -5,9 +5,8 @@ from django.urls import path, include
 # from . import views
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    # path('accounts/', views.accounts_view, name='accounts'),
-    # path('transactions/', views.transactions_view, name='transactions'),
+    path("admin/", admin.site.urls),
     path("api/", include("users.urls")),
-    path('docs/', include_docs_urls("GPA API"))
+    path("api/", include("accounts.urls")),
+    path("docs/", include_docs_urls("GPA API")),
 ]

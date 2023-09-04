@@ -1,18 +1,37 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Account
+from .serializers import AccountSerializer
+import os
+import jwt, datetime
+from gpasystem.utils.auth import get_authenticated_user
+from dotenv import load_dotenv, dotenv_values
+
+load_dotenv()
+JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
 
 
-# Create your views here.
 
-def create_account(request):
-    return HttpResponse("Hola")
-
-def accounts_list(request):
-    return HttpResponse("Hola2")
-
-def account_details(request):
-    return HttpResponse("Hola")
-
-
-def create_transaction(request):
-    return HttpResponse("Hola")
+class CreateAccountView(APIView):
+    def post(self, request):
+        user, response = get_authenticated_user(request)
+        if response:
+            return response
+        
+        serializer = AccountSerializer(data=request.data)
+        
+        if serializer.is_valid():
+            serializer.save(user=user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class ListAccountsView(APIView):
+    def get(self, request):
+        user, response = get_authenticated_user(request)
+        if response:
+            return response
+        
+        accounts = Account.objects.filter(user=user)
+        serializer = AccountSerializer(accounts, many=True)
+        return Response(serializer.data)
