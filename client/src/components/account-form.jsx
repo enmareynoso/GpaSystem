@@ -30,14 +30,12 @@ export function CardWithForm() {
         return;
       }
 
-      // Client-side validation for current balance
       if (!currentBalance || isNaN(currentBalance)) {
         setError("Please enter a valid balance.");
         return;
       }
 
-      // Clear any previous error message
-      setError("");
+      
 
       // Call the createAccount function to send a POST request with the JWT token
       await createAccount(currentBalance, userId, jwtToken);
@@ -73,7 +71,7 @@ export function CardWithForm() {
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="currentBalance">Balance</Label>
                 <Input
-                  type="number" // Assuming balance is a number
+                  type="number" 
                   id="currentBalance"
                   placeholder="Add account balance: Ex 500.32"
                   value={currentBalance}

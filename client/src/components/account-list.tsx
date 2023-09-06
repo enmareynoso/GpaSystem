@@ -26,7 +26,6 @@ export function CardWithAccounts() {
 
   const handleDeleteAccount = async (accountNumber: string) => {
     try {
-      // Dispatch the deleteAccount action with the account_number
 
       await dispatch(deleteAccount(accountNumber));
       console.log(`Account ${accountNumber} deleted successfully`);
@@ -41,7 +40,6 @@ export function CardWithAccounts() {
     dispatch(fetchAccounts())
   }, [dispatch]);
 
-  // Get the accounts from Redux
   const accounts = useAppSelector((state: RootState) => state.accounts.accounts);
 
   return (

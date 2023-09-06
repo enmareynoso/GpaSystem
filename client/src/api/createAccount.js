@@ -5,7 +5,6 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const createAccount = async (currentBalance, userId, jwtToken) => {
   try {
-    // Create an account object with current balance and user information
     const accountData = {
       current_balance: currentBalance,
       user: userId,

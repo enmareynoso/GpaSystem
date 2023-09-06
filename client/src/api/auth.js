@@ -1,4 +1,3 @@
-// src/api/auth.js
 import axios from "axios";
 import cookies from "js-cookie";
 
@@ -23,7 +22,6 @@ export const loginUser = async (credentials) => {
 };
 
 export const logoutUser = () => {
-  // Remove the JWT cookie
   cookies.remove("jwt");
 
   // Redirect to the login page

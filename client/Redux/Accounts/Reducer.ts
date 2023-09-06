@@ -22,19 +22,7 @@ const initialState: AccountState = {
 const accountSlice = createSlice({
   name: 'account',
   initialState,
-  reducers: {
-    accountDeleted: (state, action: PayloadAction<number>) => {
-      // Find the index of the deleted account in the accounts array
-      const deletedAccountIndex = state.accounts.findIndex(
-        (account) => account.id === action.payload
-      );
-
-      if (deletedAccountIndex !== -1) {
-        // Remove the deleted account from the accounts array
-        state.accounts.splice(deletedAccountIndex, 1);
-      }
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchAccounts.pending, (state) => {
@@ -51,7 +39,5 @@ const accountSlice = createSlice({
       });
   },
 });
-
-export const { accountDeleted } = accountSlice.actions;
 
 export default accountSlice.reducer;
