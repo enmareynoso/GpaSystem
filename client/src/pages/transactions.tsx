@@ -19,7 +19,7 @@ import Link from "next/link"
 import { MainNav } from "@/components/main-nav"
 import { UserNav } from "@/components/user-nav"
 import requireAuth from '../../middleware/PrivateRoute'
-import { ComboboxDemo } from "@/components/ui/combo-box"
+import { Combobox } from "@/components/ui/combo-box"
 import {
     Table,
     TableBody,
@@ -74,7 +74,7 @@ function TransactionsPage() {
                 </div>
               </div>
               
-                    <ComboboxDemo></ComboboxDemo>
+                    <Combobox></Combobox>
                     <Table>
   <TableCaption>A list of your recent Transactions.</TableCaption>
   <TableHeader>

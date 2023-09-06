@@ -17,33 +17,21 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { RootState } from '../../../Redux/store'; 
+import { useAppDispatch, useAppSelector } from '@/app/reduxHooks';
 
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-]
 
-export function ComboboxDemo() {
-  const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState("")
+function formatAccountNumber(accountNumber: string) {
+  // Replace spaces and format the account number as needed
+  return accountNumber.replace(/\s/g, '');
+}
+
+
+export function Combobox() {
+  const [open, setOpen] = React.useState(false);
+  const [value, setValue] = React.useState('');
+  const accounts = useAppSelector((state: RootState) => state.accounts.accounts);
+  const isValueSet = !!value;
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -52,11 +40,13 @@ export function ComboboxDemo() {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className={`w-[${isValueSet ? '250px' : '200px'}] justify-between`} 
         >
-          {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select account..."}
+          {value ? (
+            accounts.find((account) => account.account_number === value)?.account_number
+          ) : (
+            'Select account...'
+          )}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -65,26 +55,26 @@ export function ComboboxDemo() {
           <CommandInput placeholder="Search account..." />
           <CommandEmpty>No account found</CommandEmpty>
           <CommandGroup>
-            {frameworks.map((framework) => (
+            {accounts.map((account) => (
               <CommandItem
-                key={framework.value}
+                key={account.account_number}
                 onSelect={(currentValue) => {
-                  setValue(currentValue === value ? "" : currentValue)
-                  setOpen(false)
+                  setValue(currentValue === value ? '' : currentValue);
+                  setOpen(false);
                 }}
               >
                 <Check
                   className={cn(
-                    "mr-2 h-4 w-4",
-                    value === framework.value ? "opacity-100" : "opacity-0"
+                    'mr-2 h-4 w-4',
+                    value === account.account_number ? 'opacity-100' : 'opacity-0'
                   )}
                 />
-                {framework.label}
+                {account.account_number}
               </CommandItem>
             ))}
           </CommandGroup>
         </Command>
       </PopoverContent>
     </Popover>
-  )
+  );
 }

@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchAccounts } from './Action';
 
 export interface Account {
+  id: number
   account_number: string;
   current_balance: string;
 }
@@ -21,7 +22,19 @@ const initialState: AccountState = {
 const accountSlice = createSlice({
   name: 'account',
   initialState,
-  reducers: {},
+  reducers: {
+    accountDeleted: (state, action: PayloadAction<number>) => {
+      // Find the index of the deleted account in the accounts array
+      const deletedAccountIndex = state.accounts.findIndex(
+        (account) => account.id === action.payload
+      );
+
+      if (deletedAccountIndex !== -1) {
+        // Remove the deleted account from the accounts array
+        state.accounts.splice(deletedAccountIndex, 1);
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAccounts.pending, (state) => {
@@ -39,5 +52,6 @@ const accountSlice = createSlice({
   },
 });
 
+export const { accountDeleted } = accountSlice.actions;
 
 export default accountSlice.reducer;

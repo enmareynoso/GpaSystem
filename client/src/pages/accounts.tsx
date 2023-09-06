@@ -22,7 +22,7 @@ import PrivateRoute from '../../middleware/PrivateRoute'
 import { CardWithForm } from "@/components/account-form"
 import { AlertDemo } from "@/components/alert"
 import { CardWithAccounts } from "@/components/account-list"
-
+import { AddTransaction } from "@/components/add-transaction"
 
 
 
@@ -30,22 +30,6 @@ function AccountsPage() {
 
   return (
     <>
-      <div className="md:hidden">
-        <Image
-          src="/examples/dashboard-light.png"
-          width={1280}
-          height={866}
-          alt="Dashboard"
-          className="block dark:hidden"
-        />
-        <Image
-          src="/examples/dashboard-dark.png"
-          width={1280}
-          height={866}
-          alt="Dashboard"
-          className="hidden dark:block"
-        />
-      </div>
       <div className="hidden flex-col md:flex">
         <div className="border-b">
           <div className="flex h-16 items-center px-4">
@@ -68,12 +52,16 @@ function AccountsPage() {
             <TabsList>
               <TabsTrigger value="overview">Accounts</TabsTrigger>
               <TabsTrigger value="create-account" > Create Account </TabsTrigger>
+              <TabsTrigger value="add-transaction" > Add transaction </TabsTrigger>
             </TabsList>
             <TabsContent value="overview" className="space-y-4">
-            <CardWithAccounts></CardWithAccounts>
+             <CardWithAccounts></CardWithAccounts>
             </TabsContent>
             <TabsContent value="create-account" className="space-y-4">
               <CardWithForm></CardWithForm>
+            </TabsContent>
+            <TabsContent value="add-transaction" className="space-y-4">
+            <AddTransaction></AddTransaction>
             </TabsContent>
           </Tabs>
         </div>
