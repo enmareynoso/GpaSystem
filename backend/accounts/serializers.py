@@ -8,7 +8,7 @@ class AccountSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Account
-        fields = ('account_number','current_balance', 'user')
+        fields = ('id','account_number','current_balance', 'user')
 
     def create(self, validated_data):
         account_number = self.generate_account_number()
@@ -21,18 +21,3 @@ class AccountSerializer(serializers.ModelSerializer):
             account_number = " ".join(random_numbers)
             if not Account.objects.filter(account_number=account_number).exists():
                 return account_number
-
-# class AccountDeleteSerializer(serializers.Serializer):
-#     id = serializers.IntegerField()
-
-#     def validate_id(self, value):
-#         try:
-#             account = Account.objects.get(id=value)
-#         except Account.DoesNotExist:
-#             raise serializers.ValidationError("Account not found")
-
-#         user = self.context['request'].user
-#         if account.user != user:
-#             raise serializers.ValidationError("You are not the owner of this account")
-
-#         return {'account': account}

@@ -18,7 +18,7 @@ JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
 class Register(APIView):
     def post(self, request):
         serializer = user_serializer(data=request.data)
-        # validating serializer
+    
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
@@ -37,7 +37,7 @@ class Login(APIView):
         if not user.check_password(password):
             raise AuthenticationFailed("Incorrect password")
 
-        # FIX: "datetime.datetime not JSON serializable"
+        
         expiration_time = timezone.now() + datetime.timedelta(minutes=60)
         expiration_iso = expiration_time.isoformat()
         issued_iso = timezone.now().isoformat()

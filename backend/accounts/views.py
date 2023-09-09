@@ -24,7 +24,13 @@ class CreateAccountView(APIView):
         serializer = AccountSerializer(data=request.data)
         
         if serializer.is_valid():
-            serializer.save(user=user)
+            # Create the account
+            account = serializer.save(user=user)
+            
+            # Set Balance to current_balance
+            account.Balance = account.current_balance
+            account.save()
+            
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -41,10 +47,10 @@ class ListAccountsView(APIView):
     
 class DeleteAccountView(APIView):
     def delete(self, request, account_number):
-        # Use your get_authenticated_user function for authentication
+    
         user, response = get_authenticated_user(request)
         if not user:
-            return response  # Return the authentication error response
+            return response  
 
         try:
             account = Account.objects.get(account_number=account_number)
@@ -54,7 +60,7 @@ class DeleteAccountView(APIView):
         if account.user != user:
             return Response({"detail": "You are not the owner of this account"}, status=status.HTTP_403_FORBIDDEN)
 
-        # Delete the account
+        
         account.delete()
 
         return Response({"detail": "Account deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
