@@ -31,7 +31,6 @@ export default function PrivateRoute(Component: ComponentType) {
       // If the user is authenticated, allow access to the component
     }, [jwtToken, router]);
 
-    // Render the provided component
     return <Component {...props} />;
   };
 }

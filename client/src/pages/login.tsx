@@ -7,15 +7,11 @@ import { buttonVariants } from "@/components/ui/button"
 import { LoginForm } from "@/components/login-form"
 
 
-export const metadata: Metadata = {
-  title: "Authentication",
-  description: "Authentication forms built using the components.",
-}
+
 
 export default function AuthenticationPage() {
   return (
     <>
-
       <div className="container relative hidden h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <Link
           href="/"
@@ -27,7 +23,7 @@ export default function AuthenticationPage() {
           Register
         </Link>
          <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
-          <div className="absolute inset-0 bg-emerald-" />
+          <div className="absolute inset-0 bg-teal-600" />
           <div className="relative z-20 flex items-center text-lg font-medium">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,12 +41,10 @@ export default function AuthenticationPage() {
           </div>
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
-              <p className="text-lg">
-                &ldquo;This library has saved me countless hours of work and
-                helped me deliver stunning designs to my clients faster than
-                ever before.&rdquo;
+              <p className="text-lg italic">
+                &ldquo;Finally streamlines finances for growth.&rdquo;
               </p>
-              <footer className="text-sm">Sofia Davis</footer>
+              <footer className="text-sm font-bold">Emily Turner, Finance Manager</footer>
             </blockquote>
           </div>
         </div>

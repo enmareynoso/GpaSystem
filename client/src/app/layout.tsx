@@ -2,22 +2,20 @@ import '@/styles/globals.css'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from "@/components/theme-provider"
 
-const inter = Inter({ subsets: ['latin'] })
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+const inter = Inter({ subsets: ['latin'] })
+import { Toaster } from "@/components/ui/toaster"
+import { ReactNode } from 'react';
+import { ThemeProvider as NextThemesProvider } from "next-themes"
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
+      <head />
       <body>
-        {/* Add navigation links */}
-            {children}
-        <nav>
-          {/* Add other navigation links as needed */}
-        </nav>
+        <main>{children}</main>
+        <Toaster />
       </body>
     </html>
-  )
+  );
 }

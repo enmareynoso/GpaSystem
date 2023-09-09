@@ -3,13 +3,19 @@ import "@/styles/globals.css";
 import PrivateRoute from "../../middleware/PrivateRoute";
 import { Provider } from 'react-redux';
 import store from "../../Redux/store";
-import dotenv from 'dotenv';
-dotenv.config();
+import { Toaster } from "@/components/ui/toaster";
+import { ThemeProvider as NextThemesProvider } from "next-themes"
+
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
+      <NextThemesProvider attribute="class" defaultTheme="light" enableSystem>
+        <div className="min-h-screen">
+          <Component {...pageProps} />
+          </div>
+        </NextThemesProvider> 
+      <Toaster />
       </Provider>
   )
 };

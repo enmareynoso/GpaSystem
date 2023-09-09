@@ -20,7 +20,6 @@ import { MainNav } from "@/components/main-nav"
 import { UserNav } from "@/components/user-nav"
 import PrivateRoute from '../../middleware/PrivateRoute'
 import { CardWithForm } from "@/components/account-form"
-import { AlertDemo } from "@/components/alert"
 import { CardWithAccounts } from "@/components/account-list"
 import { AddTransaction } from "@/components/add-transaction"
 

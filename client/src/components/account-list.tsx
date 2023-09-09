@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { fetchAccounts, deleteAccount} from '../../Redux/Accounts/Action';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { AlertDemo } from './alert';
+import { AccountsAlert } from './accounts-alert';
 import { RootState } from '../../Redux/store'; 
 import { Account } from "../../Redux/Accounts/Reducer"
 import { useAppDispatch, useAppSelector } from '@/app/reduxHooks';
@@ -24,18 +24,9 @@ import { Badge } from "@/components/ui/badge"
 export function CardWithAccounts() {
   const dispatch = useAppDispatch();
 
-  const handleDeleteAccount = async (accountNumber: string) => {
-    try {
+ 
 
-      await dispatch(deleteAccount(accountNumber));
-      console.log(`Account ${accountNumber} deleted successfully`);
-      dispatch(fetchAccounts());
-    } catch (error) {
-      console.error('Error deleting account:', error);
-    }
-  };
 
-  // Fetch accounts when the component mounts
   useEffect(() => {
     dispatch(fetchAccounts())
   }, [dispatch]);
@@ -45,7 +36,7 @@ export function CardWithAccounts() {
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
       {accounts.length === 0 ? (
-        <AlertDemo />
+        <AccountsAlert />
       ) : (
         accounts.map((account) => (
           <div key={account.account_number}>
@@ -69,26 +60,6 @@ export function CardWithAccounts() {
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">${account.current_balance}</div>
-                <AlertDialog>
-                  <AlertDialogTrigger>
-                    <div className="flex items-start justify-start flex-col"> 
-                      <Badge variant="destructive">Delete</Badge>
-                    </div>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent>
-                    <AlertDialogHeader>
-                      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                      <AlertDialogDescription>
-                        This action cannot be undone. This will permanently delete your account
-                        and remove your data from our servers.
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <AlertDialogCancel>Cancel</AlertDialogCancel>
-                      <AlertDialogAction onClick={() => handleDeleteAccount(account.account_number)}>Continue</AlertDialogAction>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialog>
               </CardContent>
             </Card>
           </div>

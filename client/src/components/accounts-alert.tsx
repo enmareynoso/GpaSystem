@@ -6,7 +6,7 @@ import {
   AlertTitle,
 } from "@/components/ui/alert"
  
-export function AlertDemo() {
+export function AccountsAlert() {
   return (
     <Alert>
       <QuestionMarkCircledIcon className="h-4 w-4" />

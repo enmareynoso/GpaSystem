@@ -25,7 +25,7 @@ export default function AuthenticationPage() {
           Login
         </Link>
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
-          <div className="absolute inset-0 bg-emerald-600" />
+          <div className="absolute inset-0 bg-teal-600" />
           <div className="relative z-20 flex items-center text-lg font-medium">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -43,12 +43,10 @@ export default function AuthenticationPage() {
           </div>
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
-              <p className="text-lg">
-                &ldquo;This library has saved me countless hours of work and
-                helped me deliver stunning designs to my clients faster than
-                ever before.&rdquo;
+              <p className="text-lg italic">
+                &ldquo;I've tried various accounting systems, but Finally stands out. It's intuitive, user-friendly, and covers all aspects of accounting and finance. Finally truly lives up to its name – it's the final solution for businesses.&rdquo;
               </p>
-              <footer className="text-sm">Sofia Davis</footer>
+              <footer className="text-sm font-bold">Ben Wyatt, CFO of Martz Group</footer>
             </blockquote>
           </div>
         </div>
@@ -71,14 +69,8 @@ export default function AuthenticationPage() {
               >
                 Terms of Service
               </Link>{" "}
-              and{" "}
-              <Link
-                href="/privacy"
-                className="underline underline-offset-4 hover:text-primary"
-              >
-                Privacy Policy
-              </Link>
-              .
+              
+              
             </p>
           </div>
         </div>

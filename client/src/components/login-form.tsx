@@ -65,7 +65,7 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
               autoCorrect="off"
               disabled={isLoading}
               value={username}
-              onChange={(e) => setUsername(e.target.value)} // Update the state
+              onChange={(e) => setUsername(e.target.value)} 
             />
             <Label className="sr-only" htmlFor="password">
               Password

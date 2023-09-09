@@ -94,8 +94,8 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               id="username"
               placeholder="Username"
               type="text"
-              value={username} // Bind value to state
-              onChange={(e) => setUsername(e.target.value)} // Update state on change
+              value={username} 
+              onChange={(e) => setUsername(e.target.value)} 
               autoCapitalize="none"
               autoComplete="none"
               autoCorrect="off"
@@ -109,7 +109,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               placeholder="Password"
               type="password"
               value={password} 
-              onChange={(e) => setPassword(e.target.value)} // Update state on change
+              onChange={(e) => setPassword(e.target.value)} 
               autoCapitalize="none"
               autoComplete="none"
               autoCorrect="off"

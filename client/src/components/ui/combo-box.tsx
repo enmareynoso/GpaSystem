@@ -21,10 +21,7 @@ import { RootState } from '../../../Redux/store';
 import { useAppDispatch, useAppSelector } from '@/app/reduxHooks';
 
 
-function formatAccountNumber(accountNumber: string) {
-  // Replace spaces and format the account number as needed
-  return accountNumber.replace(/\s/g, '');
-}
+
 
 
 export function Combobox() {
