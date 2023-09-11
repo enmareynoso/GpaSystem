@@ -76,6 +76,3 @@ You can download docker desktop from here: [Docker desktop](https://www.docker.c
 
 
 
-[Client docker image](https://hub.docker.com/r/enmareynoso/client-nextjs/tags)
-
-                 
