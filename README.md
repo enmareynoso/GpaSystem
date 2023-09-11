@@ -36,7 +36,7 @@ This will download the Client image from Docker Hub to your computer.
 And that's it! 🎉 You are now running the "GpaSystem" inside Docker containers on your machine.
 
 ## Troubleshooting
-If you encounter the following error: ***Cannot connect to the Docker daemon at unix:/var/run/docker.sock. Is the docker daemon running?***
+If you encounter the following error while pulling the images: ***Cannot connect to the Docker daemon at unix:/var/run/docker.sock. Is the docker daemon running?***
 **Check Docker Daemon Status:**
 
 Ensure that the Docker daemon is running on your system. You can check its status by running:
