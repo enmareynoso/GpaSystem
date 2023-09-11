@@ -88,11 +88,11 @@ WSGI_APPLICATION = "gpasystem.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DATABASE_NAME"),
-        "USER": os.getenv("DATABASE_USER"),
-        "PASSWORD": os.getenv("DATABASE_PASSWORD"),
-        "HOST": os.getenv("DATABASE_HOST"),
-        "PORT": os.getenv("DATABASE_PORT"),
+        "NAME": os.getenv("SUPABASE_DATABASE_NAME"),
+        "USER": os.getenv("SUPABASE_DATABASE_USER"),
+        "PASSWORD": os.getenv("SUPABASE_DATABASE_PASSWORD"),
+        "HOST": os.getenv("SUPABASE_DATABASE_HOST"),
+        "PORT": os.getenv("SUPABASE_DATABASE_PORT"),
     }
 }
 
