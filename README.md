@@ -33,10 +33,34 @@ This will download the Client image from Docker Hub to your computer.
 
 **Important Note:** Ensure that the backend image is running correctly for the proper functioning of the application.
 
-
-
-
 And that's it! 🎉 You are now running the "GpaSystem" inside Docker containers on your machine.
+
+## Troubleshooting
+If you encounter the following error: ***Cannot connect to the Docker daemon at unix:/var/run/docker.sock. Is the docker daemon running?***
+**Check Docker Daemon Status:**
+
+Ensure that the Docker daemon is running on your system. You can check its status by running:
+
+
+`docker info` 
+
+If the Docker daemon is not running, you will need to start it. The method to start Docker depends on your operating system. Here are some common ways to start it:
+
+-   **Linux:** Use the following command to start the Docker daemon:
+    
+
+    
+    `sudo systemctl start docker` 
+    
+-   **Windows:** Start Docker Desktop from the system tray or application menu.
+    
+-   **macOS:** Start Docker Desktop from the applications.
+
+
+You can download docker desktop from here: [Docker desktop](https://www.docker.com/products/docker-desktop/)
+
+
+
 
 ## Resources
 
@@ -45,6 +69,12 @@ And that's it! 🎉 You are now running the "GpaSystem" inside Docker containers
 [Install on Windows | Docker Documentation](https://docs.docker.com/desktop/install/windows-install/) 🪟
 
 [Backend docker image](https://hub.docker.com/r/enmareynoso/backend-django)
+
+[Client docker image](https://hub.docker.com/r/enmareynoso/client-nextjs/tags)
+
+                 
+
+
 
 [Client docker image](https://hub.docker.com/r/enmareynoso/client-nextjs/tags)
 
