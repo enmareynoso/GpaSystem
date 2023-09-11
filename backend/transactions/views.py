@@ -31,11 +31,13 @@ class TransactionCreate(APIView):
             return Response({'error': 'Account not found or not authorized.'}, status=status.HTTP_404_NOT_FOUND)
 
        
-        local_timezone = pytz.timezone(timezone.get_current_timezone_name())
+        local_timezone = pytz.timezone('Etc/GMT+4')
+        local_datetime = datetime.now(local_timezone)
+
 
         # Create a Transaction instance and set its date field to the current date and time in the local timezone
         transaction = Transaction(account=account, **request.data)
-        transaction.date = timezone.now().astimezone(local_timezone)
+        transaction.date = local_datetime
 
         transaction_type = transaction.transaction_type
         amount = transaction.amount
@@ -86,15 +88,14 @@ class BalanceView(APIView):
             return response  
 
         try:
-            # Parse the date from the query parameters
+           
             date_str = self.request.query_params.get('date')
-            target_date = datetime.fromisoformat(date_str)
+            target_date = timezone.datetime.strptime(date_str, '%Y-%m-%d')  #timezone-aware
 
-            # Calculate the start and end timestamps for the target date
-            start_timestamp = datetime.combine(target_date, time.min)
-            end_timestamp = datetime.combine(target_date, time.max)
+            start_timestamp = timezone.make_aware(timezone.datetime.combine(target_date, timezone.datetime.min.time()))
+            end_timestamp = timezone.make_aware(timezone.datetime.combine(target_date, timezone.datetime.max.time()))
 
-            # Retrieve transactions within the specified date range
+          
             transactions = Transaction.objects.filter(
                 account__user=user,
                 date__range=(start_timestamp, end_timestamp)
@@ -103,20 +104,19 @@ class BalanceView(APIView):
             # Initialize movements list
             movements_list = []
 
-            account_current_balances = {}  # For mainting current_balance for each account
+            account_current_balances = {}  # For maintaining current_balance for each account
 
             for transaction in transactions:
-             
                 transaction_type = transaction.transaction_type
                 note = transaction.note
                 amount = transaction.amount
 
-                # Get  account associated with the transaction
+                # Get account associated with the transaction
                 account = transaction.account
 
                 # If the account is not in the account_current_balances dict, initialize it
                 if account not in account_current_balances:
-                    account_current_balances[account] = account.Balance  # Initialize with the account's balance
+                    account_current_balances[account] = account.Balance  
 
                 # Calculate the new balance based on the transaction type
                 current_balance = account_current_balances[account]
@@ -129,9 +129,9 @@ class BalanceView(APIView):
                 # Update the balance
                 account_current_balances[account] = current_balance
 
-                # Build  movement entry for the account
+                # Build movement entry for the account
                 movement = {
-                    'Date': transaction.date.strftime('%Y-%m-%d'),
+                    'Date': timezone.localtime(transaction.date).strftime('%Y-%m-%d'),  
                     'Account_Number': account.account_number,
                     'Transaction_Type': transaction_type,
                     'Note': note,
