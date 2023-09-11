@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { loginUser } from "@/api/auth";
-import cookies from "js-cookie"  
+import cookies from "js-cookie" 
 import { useRouter } from "next/router"; 
 import PrivateRoute from "../../middleware/PrivateRoute";
 

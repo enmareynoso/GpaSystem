@@ -44,7 +44,7 @@ export default function AuthenticationPage() {
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
               <p className="text-lg italic">
-                &ldquo;I've tried various accounting systems, but Finally stands out. It's intuitive, user-friendly, and covers all aspects of accounting and finance. Finally truly lives up to its name – it's the final solution for businesses.&rdquo;
+               I've tried various accounting systems, but Finally stands out. It's intuitive, user-friendly, and covers all aspects of accounting and finance. Finally truly lives up to its name – it's the final solution for businesses.
               </p>
               <footer className="text-sm font-bold">Ben Wyatt, CFO of Martz Group</footer>
             </blockquote>

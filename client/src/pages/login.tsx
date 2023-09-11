@@ -42,7 +42,7 @@ export default function AuthenticationPage() {
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
               <p className="text-lg italic">
-                &ldquo;Finally streamlines finances for growth.&rdquo;
+                Finally streamlines finances for growth.
               </p>
               <footer className="text-sm font-bold">Emily Turner, Finance Manager</footer>
             </blockquote>

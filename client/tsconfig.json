@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/HOC/requiereAuth.jsx", "src/components/HOC/requiereAuth.jsx", "src/api/userData.js", "Redux/reducers/accounts.js", "Redux/store.ts", "Redux/accountSlice.js", "src/types/Account.types.js", "Redux/actions/accountActions.js", "Redux/store.ts", "src/components/account-list.tsx", "Redux/Accounrs/Action.js", "Redux/Accounrs/ActionType.js", "Redux/Accounrs/Reducer.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/HOC/requiereAuth.jsx", "src/components/HOC/requiereAuth.jsx", "src/api/userData.js", "Redux/reducers/accounts.js", "Redux/store.ts", "Redux/accountSlice.js", "src/types/Account.types.js", "Redux/actions/accountActions.js", "Redux/store.ts", "src/components/account-list.tsx", "Redux/Accounts/Action.js", "Redux/Accounts/ActionType.js", "Redux/Accounts/Reducer.js"],
   "exclude": ["node_modules"]
 }

@@ -32,7 +32,7 @@ import {
 } from "@/components/ui/form"
 import { useToast } from "@/components/ui/use-toast"
 import { createAccount } from "@/api/createAccount";
-import Cookies from "js-cookie"; 
+
 import { getJWTFromCookie, getUserIdFromJWT } from "@/lib/jwtUtils"
 
 
