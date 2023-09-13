@@ -26,7 +26,7 @@ This will download the Backend image from Docker Hub to your computer.
 
 This will download the Client image from Docker Hub to your computer.
     
-2 - Next, run the following command to start a container using the "frame-app" image:
+2 - Next, run the following command to start a container using the image:
 
         docker run -dp  3000:3000 enmareynoso/client-nextjs
 
